@@ -1045,17 +1045,21 @@ footer .legal { text-align: center; justify-items: center; }
 @media (max-width: 760px) { footer .rodape { gap: 1.2rem; } footer .rodape ul { gap: .1rem 1.2rem; } }
 /* "Termos de uso" só uma vez no rodapé (Patrick 26/11): some da lista de contatos, fica o de baixo */
 footer .rodape li:has(a[href="#termos"]) { display: none; }
-/* Rodapé no computador (Patrick 26/11: "não pode ficar assim no pc"): mais baixo, todos os links numa linha só separados por pontinhos dourados, cidades logo abaixo */
+/* Rodapé no computador em colunas (Patrick 26/11 escolheu "Em colunas, como site de loja"; estilo do "Footer Two" do 21st.dev,
+   meschacirung): logo e frase à esquerda, grupos de links em colunas à direita com títulos dourados pequenos,
+   direitos e Termos de uso numa linha só embaixo. No celular continua centralizado. */
 @media (min-width: 961px) {
-  footer .rodape { flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 0; }
-  footer .rodape > div:first-child, footer .rodape > div:last-child { flex: 0 0 100%; }
-  footer .rodape > div:first-child { margin-bottom: 1.6rem; }
-  footer .rodape > div:first-child p { max-width: none; }
-  footer .rodape > div:nth-child(3)::before { content: "·"; color: var(--dourado); margin: 0 1.2rem; }
-  footer .rodape > div:nth-child(2), footer .rodape > div:nth-child(3) { display: flex; align-items: baseline; }
-  footer .rodape > div:last-child { margin-top: .6rem; }
-  footer { padding-top: 3.6rem; }
-  footer .legal { margin-top: 2.4rem; }
+  footer { padding: 3.4rem 0 2rem; }
+  footer .rodape { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 2.5rem; align-items: start; text-align: left; }
+  footer .rodape > div:first-child p { max-width: 20rem; margin: 0; }
+  footer .rodape .logo img { margin: 0 0 .9rem; height: 64px; width: auto; }
+  footer .rodape h3 { display: block; margin-bottom: .9rem; }
+  footer .rodape ul, footer .rodape > div:last-child ul { display: block; color: inherit; font-size: inherit; letter-spacing: normal; }
+  footer .rodape li a, footer .rodape li span { padding: .3rem 0; }
+  footer .legal { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: .5rem 2rem; text-align: left; margin-top: 2.6rem; padding-top: 1.1rem; }
+  footer .legal .termos summary { min-height: 0; }
+  footer .legal .termos[open] { flex-basis: 100%; }
+  body.tem-pedido footer { padding-bottom: 90px; }
 }
 /* sem a linha dourada por dentro das fotos (Patrick 26/11: "melhor ficar sem as bordinhas") */
 .inspiracoes .insp-grade figure::after { display: none; }
